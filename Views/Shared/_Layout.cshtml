@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Example - An Example GUI with ASP.NET and Electron.Net</title>
+	<link rel="stylesheet" href="~/css/site.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Gideon+Roman&display=swap" rel="stylesheet"> 
+	<script>
+		function CopyToClipboard(stringToCopy) {
+			navigator.clipboard.writeText(stringToCopy)
+			.then(() => {
+			  alert('Text copied to clipboard');
+			})
+			.catch(err => {
+			  alert('Error in copying text: ', err);
+			});
+		}
+	</script>
+</head>
+<body>
+	<!--<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>-->
+	<div id="titlebar">
+		<div id="drag-region">
+			<a class="titlebar-title">Rati</a>
+		</div>
+	</div>
+	
+	<div class="header">
+		<ul>
+			<li><a class="navbar-item right" asp-area="" asp-controller="Home" asp-action="Index">Library</a></li>
+			<li><a class="navbar-item right" asp-area="" asp-controller="Home" asp-action="Latest">Latest Game Updates</a></li>
+			<li><a class="navbar-item right" asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+		</ul>
+	</div>
+
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+	<footer class="border-top footer text-muted hideCompletely">
+		<div class="container">
+			Made By Vanargand - <a style="color:blue" onclick="CopyToClipboard('https://github.com/ElectronNET/Electron.NET')">Copy Link To Source On GitHub</a>
+		</div>
+	</footer>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
